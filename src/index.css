@@ -1,0 +1,23 @@
+.text-field {
+  width: 100%;
+  min-height: 100px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  font-size: 18px;
+  outline: none; 
+}
+
+.selected {
+ color: red; 
+}
+
+
+.letter {
+  display: inline-block;
+  cursor: pointer; 
+}
+.selection-rect {
+  border: 1px dashed blue; 
+  pointer-events: none;
+  z-index: 9999; 
+}

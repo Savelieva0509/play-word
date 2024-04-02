@@ -3,13 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Page title</title>
-    <link rel="stylesheet" href="./sass/index.scss" />
-    <script type="module" src="./index.js"></script>
-  </head>
+    <title>play-word-app</title>
+    <link rel="stylesheet" href="./index.css" />
+      </head>
   <body>
-    <h1>play-word-app</h1>
-    <!-- ❗️❗️❗️ Add partials like so for every page -->
-    <include src="./partials/example.html"></include>
+    <main>
+      <section>
+        <form class="form">
+          <label for="input">Enter the text:</label>
+          <input type="text" id="input" name="input" />
+          <button type="button" class="button">show text</button>
+        </form>
+        <div class="text-field"></div>
+      </section>
+    </main>
+  <script src="./js/index.js" type="module"></script>
   </body>
 </html>
+
+
