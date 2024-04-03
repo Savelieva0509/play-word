@@ -1,3 +1,5 @@
+import moveSingleLetter from "./moveSingleLetter";
+
 function selectSingleLetter(textField) {
   let selectedLetter = null;
 
@@ -10,8 +12,6 @@ function selectSingleLetter(textField) {
 
     selectedLetter = letter.classList.contains('selected') ? letter : null;
   }
-
-  
 
   return toggleSelection;
 }

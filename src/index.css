@@ -3,7 +3,7 @@
   min-height: 100px;
   padding: 10px;
   border: 1px solid #ccc;
-  font-size: 18px;
+  font-size: 30px;
   outline: none; 
 }
 
@@ -16,6 +16,7 @@ color: blue;
 }
 
 .letter {
+  font-size: 30px;
   display: inline-block;
   cursor: pointer; 
   user-select: none;
