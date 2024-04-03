@@ -1,7 +1,4 @@
-import clearSelection from './clearSelection.js';
-
-function selectSingleLetter() {
-  const textField = document.querySelector('.text-field');
+function selectSingleLetter(textField) {
   let selectedLetter = null;
 
   function toggleSelection(letter) {
@@ -14,14 +11,9 @@ function selectSingleLetter() {
     selectedLetter = letter.classList.contains('selected') ? letter : null;
   }
 
-  function highlightLetter(event) {
-    if (!event.ctrlKey && event.target.classList.contains('letter')) {
-      toggleSelection(event.target);
-    }
-  }
+  
 
-  textField.addEventListener('click', highlightLetter);
-  document.addEventListener('click', event => clearSelection(event, textField));
+  return toggleSelection;
 }
 
 export default selectSingleLetter;

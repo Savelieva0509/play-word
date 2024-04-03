@@ -1,8 +1,5 @@
-import clearSelection from './clearSelection.js';
-
-function selectMultipleLetters() {
-  const textField = document.querySelector('.text-field');
-
+function selectMultipleLetters(textField) {
+  
   function toggleSelection(letter) {
     letter.classList.toggle('selected');
   }
@@ -14,7 +11,6 @@ function selectMultipleLetters() {
   }
 
   textField.addEventListener('click', highlightLetter);
-  document.addEventListener('click', event => clearSelection(event, textField));
 }
 
 export default selectMultipleLetters;
