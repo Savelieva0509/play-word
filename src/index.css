@@ -15,6 +15,7 @@
 .letter {
   display: inline-block;
   cursor: pointer; 
+  user-select: none;
 }
 .selection-rect {
   border: 1px dashed blue; 
