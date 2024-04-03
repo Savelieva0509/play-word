@@ -11,6 +11,9 @@
  color: red; 
 }
 
+.selected-rect {
+color: blue;
+}
 
 .letter {
   display: inline-block;
