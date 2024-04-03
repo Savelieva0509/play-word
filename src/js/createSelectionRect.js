@@ -1,5 +1,5 @@
-function createSelectionRect(startX, startY) {
-  const textField = document.querySelector('.text-field');
+function createSelectionRect(startX, startY, textField) {
+  console.log('createSelectionRect initialized');
   const selectionRect = document.createElement('div');
   selectionRect.classList.add('selection-rect');
   selectionRect.style.position = 'absolute';
@@ -26,9 +26,9 @@ function createSelectionRect(startX, startY) {
         rect.top < Math.max(startCoords.y, endCoords.y) &&
         rect.bottom > Math.min(startCoords.y, endCoords.y)
       ) {
-        letter.classList.add('selected');
+        letter.classList.add('selected-rect');
       } else {
-        letter.classList.remove('selected');
+        letter.classList.remove('selected-rect');
       }
     });
   }
@@ -49,6 +49,9 @@ function createSelectionRect(startX, startY) {
   }
 
   function handleMouseDown(event) {
+    
+    console.log('handleMouseDown called');
+    if (event.target.classList.contains('letter')) return;
     isCreatingSelectionRect = true;
     startCoords = { x: event.clientX, y: event.clientY };
     document.addEventListener('mousemove', updateSelection);
