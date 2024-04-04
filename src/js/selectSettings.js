@@ -7,13 +7,13 @@ const selectedLetters = new Set();
 function selectSettings() {
   const textField = document.querySelector('.text-field');
 
-  const toggleSingleSelection = selectSingleLetter(textField);
-
+  const { toggleSelection, selectedLetters } = selectSingleLetter(textField);
+ 
   textField.querySelectorAll('.letter').forEach(letter => {
     letter.addEventListener('click', event => {
       const target = event.target;
       if (!event.ctrlKey && target.classList.contains('letter')) {
-        toggleSingleSelection(target);
+        toggleSelection(target);
         selectMultipleLetters(textField);
       } else {
         createSelectionRect(0, 0, textField);
