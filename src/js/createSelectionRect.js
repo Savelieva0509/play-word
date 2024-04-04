@@ -1,5 +1,5 @@
 function createSelectionRect(startX, startY, textField) {
-  console.log('createSelectionRect initialized');
+
   const selectionRect = document.createElement('div');
   selectionRect.classList.add('selection-rect');
   selectionRect.style.position = 'absolute';
