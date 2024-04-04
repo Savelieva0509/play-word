@@ -1,5 +1,5 @@
+import { selectedLetters } from './selectSettings';
 function createSelectionRect(startX, startY, textField) {
-
   const selectionRect = document.createElement('div');
   selectionRect.classList.add('selection-rect');
   selectionRect.style.position = 'absolute';
@@ -7,7 +7,7 @@ function createSelectionRect(startX, startY, textField) {
   selectionRect.style.top = startY + 'px';
   selectionRect.style.width = '0';
   selectionRect.style.height = '0';
-  selectionRect.style.backgroundColor = 'rgba(0,0,0,0)'; // Цвет выделения
+  
   textField.appendChild(selectionRect);
 
   let isCreatingSelectionRect = false;
@@ -27,6 +27,7 @@ function createSelectionRect(startX, startY, textField) {
         rect.bottom > Math.min(startCoords.y, endCoords.y)
       ) {
         letter.classList.add('selected-rect');
+        selectedLetters.add(letter);
       } else {
         letter.classList.remove('selected-rect');
       }
@@ -49,7 +50,6 @@ function createSelectionRect(startX, startY, textField) {
   }
 
   function handleMouseDown(event) {
-    
     console.log('handleMouseDown called');
     if (event.target.classList.contains('letter')) return;
     isCreatingSelectionRect = true;
