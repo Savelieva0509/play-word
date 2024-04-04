@@ -2,53 +2,62 @@ import { selectedLetters } from './selectSettings';
 
 function moveSelectedLetters() {
   let isDragging = false;
-  let offsetX, offsetY;
+  let initialMouseX, initialMouseY;
+  let initialPositions = new Map(); // Сохраняем начальные координаты для каждой буквы
 
-  // Обработчик события mousedown для начала перемещения букв
-  document.addEventListener('mousedown', event => {
+  document.addEventListener('mousedown', onMouseDown);
+
+  function onMouseDown(event) {
     const target = event.target;
-    if (selectedLetters.size > 0 && target.classList.contains('letter')) {
+    const selectedLettersArray = Array.from(selectedLetters); // Создаем массив с текущим содержимым коллекции
+
+    if (
+      selectedLettersArray.length > 0 &&
+      target.classList.contains('letter') &&
+      !event.ctrlKey 
+    ) {
       isDragging = true;
 
-      // Получаем начальные координаты букв и координаты указателя мыши
-      const rect = target.getBoundingClientRect();
-      offsetX = event.clientX - rect.left;
-      offsetY = event.clientY - rect.top;
+      initialMouseX = event.clientX;
+      initialMouseY = event.clientY;
 
-      // Перемещаем все выделенные буквы в начальное положение
-      selectedLetters.forEach(letter => {
+      selectedLettersArray.forEach(letter => {
+        const rect = letter.getBoundingClientRect();
+        const initialX = rect.left;
+        const initialY = rect.top;
+        initialPositions.set(letter, { x: initialX, y: initialY });
         letter.style.position = 'absolute';
         letter.style.zIndex = '1000';
-        document.body.appendChild(letter);
-        moveAt(event.pageX, event.pageY, letter);
       });
-    }
-  });
 
-  // Функция для перемещения букв в новые координаты
-  function moveAt(pageX, pageY, letter) {
-    letter.style.left = pageX - offsetX + 'px';
-    letter.style.top = pageY - offsetY + 'px';
+      document.addEventListener('mousemove', onMouseMove);
+      document.addEventListener('mouseup', onMouseUp);
+    }
   }
 
-  // Обработчик события mousemove для перемещения букв
   function onMouseMove(event) {
     if (isDragging) {
+      const deltaX = event.clientX - initialMouseX;
+      const deltaY = event.clientY - initialMouseY;
+
       selectedLetters.forEach(letter => {
-        moveAt(event.pageX, event.pageY, letter);
+        const initialPosition = initialPositions.get(letter);
+        const newLeft = initialPosition.x + deltaX;
+        const newTop = initialPosition.y + deltaY;
+        letter.style.left = `${newLeft}px`;
+        letter.style.top = `${newTop}px`;
       });
     }
   }
 
-  document.addEventListener('mousemove', onMouseMove);
+  function onMouseUp() {
+    isDragging = false;
+    initialPositions.clear();
+    selectedLetters.clear();
 
-  // Обработчик события mouseup для завершения перемещения букв
-  document.addEventListener('mouseup', () => {
-    if (isDragging) {
-      isDragging = false;
-      document.removeEventListener('mousemove', onMouseMove);
-    }
-  });
+    document.removeEventListener('mousemove', onMouseMove);
+    document.removeEventListener('mouseup', onMouseUp);
+  }
 }
 
 export default moveSelectedLetters;

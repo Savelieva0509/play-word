@@ -1,4 +1,3 @@
-import moveSingleLetter from './moveSingleLetter';
 import { selectedLetters } from './selectSettings';
 
 function selectSingleLetter() {
