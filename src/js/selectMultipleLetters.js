@@ -1,12 +1,11 @@
-import { selectedLetters } from "./selectSettings";
+import { selectedLetters } from './selectSettings';
 function selectMultipleLetters(textField) {
-  
   function toggleSelection(letter) {
     letter.classList.toggle('selected');
     if (letter.classList.contains('selected')) {
-      selectedLetters.add(letter); // Добавляем выделенную букву в коллекцию
+      selectedLetters.add(letter);
     } else {
-      selectedLetters.delete(letter); // Удаляем выделенную букву из коллекции
+      selectedLetters.delete(letter);
     }
   }
 
@@ -20,7 +19,3 @@ function selectMultipleLetters(textField) {
 }
 
 export default selectMultipleLetters;
-
-
-
-

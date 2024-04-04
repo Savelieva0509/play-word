@@ -7,7 +7,7 @@ function createSelectionRect(startX, startY, textField) {
   selectionRect.style.top = startY + 'px';
   selectionRect.style.width = '0';
   selectionRect.style.height = '0';
-  
+
   textField.appendChild(selectionRect);
 
   let isCreatingSelectionRect = false;
