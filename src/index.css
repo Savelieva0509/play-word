@@ -10,7 +10,6 @@ main {
 }
 
 section {
-  
   text-align: center;
 }
 
@@ -18,18 +17,17 @@ section {
   margin-bottom: 20px;
 }
 
-label {
+.label {
   display: block;
   margin-bottom: 10px;
 }
 
-input[type="text"] {
+.input {
   width: 300px;
-  padding: 5px;
+  padding: 7px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin-bottom: 10px;
 }
 
 .button {
@@ -41,6 +39,7 @@ input[type="text"] {
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-left: 10px;
 }
 
 .button:hover {
@@ -75,9 +74,8 @@ input[type="text"] {
   transition: color 0.3s ease;
 }
 
-
 .selection-rect {
-  border: 1px dashed blue; 
+  border: 1px dashed blue;
   pointer-events: none;
-  z-index: 9999; 
+  z-index: 9999;
 }
